@@ -12,6 +12,18 @@ export class TodoService {
         { id: 3, description: 'Codear como un pro', done: true}
     ];
 
+    get totalTodos() {
+        return this.todos.length;
+    }
+
+    get pendingTodos() {
+        return this.todos.filter(todo => todo.done === false).length;
+    }
+
+    get completedTodos() {
+        return this.todos.filter(todo => todo.done === true).length;
+    }
+
     findAll(statusArgs: StatusArgs): Todo[] {
         const { status } = statusArgs;
 
